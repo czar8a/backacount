@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -14,14 +13,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.context.TestPropertySource;
 
 import coop.home.backacount.dto.acouttransfer.RatesDTO;
-import coop.home.backacount.excepcion.BusinessException;
-import coop.home.backacount.excepcion.UnAuthorizedException;
-import coop.home.backacount.service.CurrencyConversionService;
 import coop.home.backacount.service.ExchangeRatesService;
+import coop.home.backacount.service.impl.CurrencyConversionServiceImpl;
 
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -31,7 +26,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 class CurrencyConversionServiceTest {
 	
 	@InjectMocks
-	private CurrencyConversionService currencyConversionService;
+	private CurrencyConversionServiceImpl currencyConversionService;
 	
 	@Mock
 	private ExchangeRatesService exchangeRatesService;

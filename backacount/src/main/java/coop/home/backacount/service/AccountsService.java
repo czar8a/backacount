@@ -25,83 +25,13 @@ import coop.home.backacount.repository.entity.TransactionsPK;
 import coop.home.backacount.util.CustomDateFunctions;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
-@Slf4j
-@Transactional
-public class AccountsService {
+public interface AccountsService {
 
-	@Autowired
-	private IAccountsRepository accountsRepository;
+	public List<AccountsDTO> getAccounts(BigInteger idfinancialcompany, String loginuser,TokenBackAcountDTO tokenBackAcountDTO);
 	
-	@Autowired
-	private ITransactionsRepository transactionsRepository;
+	public void credit(AccountsPK accountsPK, BigDecimal creditValue) ;
 	
-	@Autowired
-	private MessageSource mensajes;
-
-	public List<AccountsDTO> getAccounts(BigInteger idfinancialcompany, String loginuser,TokenBackAcountDTO tokenBackAcountDTO) {
-		
-		if(!tokenBackAcountDTO.getLoginUser().equals(loginuser)) {
-			throw new UnAuthorizedException(mensajes.getMessage("app.security.acountowner.code", null, LocaleContextHolder.getLocale()),
-					mensajes.getMessage("app.security.acountowner.mesage", null, LocaleContextHolder.getLocale()));
-		}
-		
-		
-		List<AccountsDTO> accounts = new ArrayList<>();
-		for(Accounts u : accountsRepository.
-				findByAccountsPK_usersidfinancialcompanyAndFinancialusers_FinancialusersPK_loginuser(
-						idfinancialcompany,loginuser)) {
-			if(u!=null) {
-				accounts.add(new AccountsDTO(u.getAccountsPK().getIdacount(),
-						u.getAccountsPK().getUsersidfinancialcompany(),
-						u.getFinancialusers().getFinancialusersPK().getLoginuser(),
-						u.getBalance()));
-			}
-		}
-		return accounts;
-	}
+	public void debit(AccountsPK accountsPK, BigDecimal debitValue) ;
 	
-	public void credit(AccountsPK accountsPK, BigDecimal creditValue) {
-		this.acountMovement(accountsPK, creditValue, true);
-	}
 	
-	public void debit(AccountsPK accountsPK, BigDecimal debitValue) {
-		this.acountMovement(accountsPK, debitValue, false);
-	}
-	
-	private void acountMovement(AccountsPK accountsPK, BigDecimal creditValue, boolean credit) {
-		
-		Optional<Accounts> accounts = accountsRepository.findById(accountsPK);
-		
-		if(accounts.isPresent()) {
-			Accounts account = accounts.get();
-			
-			BigInteger transactionType;
-			if(credit) {
-				account.setBalance(account.getBalance().subtract(creditValue));
-				transactionType = BigInteger.valueOf(1);
-			}
-			else {
-				account.setBalance(account.getBalance().add(creditValue));
-				transactionType = BigInteger.valueOf(2);
-			}
-			
-			
-			TransactionsPK transactionsPK = new  TransactionsPK(account.getAccountsPK().getUsersidfinancialcompany(),
-					account.getAccountsPK().getIdacount(),
-					transactionType,
-					this.getTimeStamp());
-			
-			Transactions transactions = new Transactions(transactionsPK,creditValue);
-			
-			transactionsRepository.save(transactions);
-			
-			accountsRepository.save(account);
-			
-		}
-	}
-	
-	private String getTimeStamp() {
-		return CustomDateFunctions.getTimeStampWithMinutes(new Date());
-	}
 }

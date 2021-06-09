@@ -28,84 +28,14 @@ import coop.home.backacount.repository.entity.Accounttransfers;
 import coop.home.backacount.repository.specification.CustomSpecification;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
-@Slf4j
-@Transactional
-@PropertySource("classpath:application.properties")
-public class AccountsTransferConsultService {
+public interface AccountsTransferConsultService {
 	
-
-	@Autowired
-	private IAccountsTransferRepository accountsTransferRepository;
-	
-	@Autowired
-	private IAccountsRepository accountsRepository;
-
-	@Autowired
-	private MessageSource mensajes;
-	
-	@Value("${exchangerates.defaultsymbol}")
-	private String defaultSymbol;
 	
 
 	public TranseferConsultDTO getTransfers(BigInteger idfinancialcompany, String loginuser,TokenBackAcountDTO tokenBackAcountDTO, 
-			int pageNumber, int numberElements) {
-		
-		if(!tokenBackAcountDTO.getLoginUser().equals(loginuser)) {
-			throw new UnAuthorizedException(mensajes.getMessage("app.security.acountowner.code", null, LocaleContextHolder.getLocale()),
-					mensajes.getMessage("app.security.acountowner.mesage", null, LocaleContextHolder.getLocale()));
-		}
-		
-		Pageable pageable = PageRequest.of(pageNumber-1, numberElements);
-			
-		Page<Accounttransfers> pagedResult = accountsTransferRepository.findAll(CustomSpecification.filterByUserAccounts(idfinancialcompany,loginuser) ,pageable);
-
-		List<Accounttransfers> result = new ArrayList<>();
-
-		if (pagedResult.hasContent()) {
-			result.addAll(pagedResult.getContent());
-		}
-		
-		return map(result, pagedResult.getTotalElements());
-	}
+			int pageNumber, int numberElements) ;
 	
-	private TranseferConsultDTO map(List<Accounttransfers> result, long totalRecords) {
-		
-		List<TranseferDetailDTO> transeferDetails = new ArrayList<>();
-
-		for (Accounttransfers accounttransfer : result) {
-			
-			TranseferDetailDTO transeferDetail = new TranseferDetailDTO(
-					accounttransfer.getAccounttransfersPK().getTransferdate(), 
-					new AccountConsultDTO(
-							accounttransfer.getAccounttransfersPK().getSourceaccountidcompany(),
-							accounttransfer.getAccounttransfersPK().getSourceaccountidacount(), 
-							new FinancialUsersAcauntDTO(
-									accounttransfer.getSourceAccount().getFinancialusers().getIddocument(),
-									accounttransfer.getSourceAccount().getFinancialusers().getIddoctype(),
-									accounttransfer.getSourceAccount().getFinancialusers().getFinancialusersPK().getLoginuser(),
-									accounttransfer.getSourceAccount().getFinancialusers().getFinancialusername(),
-									accounttransfer.getSourceAccount().getFinancialusers().getFinancialuserlastname())),
-					new AccountConsultDTO(
-							accounttransfer.getAccounttransfersPK().getRecipientaccountidcompany(),
-							accounttransfer.getAccounttransfersPK().getRecipientaccountidacount(), 
-							new FinancialUsersAcauntDTO(
-									accounttransfer.getRecipentAccounts().getFinancialusers().getIddocument(),
-									accounttransfer.getRecipentAccounts().getFinancialusers().getIddoctype(),
-									accounttransfer.getRecipentAccounts().getFinancialusers().getFinancialusersPK().getLoginuser(),
-									accounttransfer.getRecipentAccounts().getFinancialusers().getFinancialusername(),
-									accounttransfer.getRecipentAccounts().getFinancialusers().getFinancialuserlastname())), 
-					defaultSymbol, 
-					accounttransfer.getAmount(), 
-					accounttransfer.getDescription());
-			
-			
-			transeferDetails.add(transeferDetail);
-			
-		}
-		
-		return new TranseferConsultDTO(totalRecords,transeferDetails);
-	}
+	
 	
 	
 }

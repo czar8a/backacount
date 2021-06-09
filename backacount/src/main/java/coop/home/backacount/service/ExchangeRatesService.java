@@ -15,52 +15,13 @@ import coop.home.backacount.externalresource.rest.ExchangeratesSymbolsClient;
 import coop.home.backacount.util.CustomDateFunctions;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
-@Slf4j
-@Scope("singleton")
-public class ExchangeRatesService {
+public interface ExchangeRatesService {
 	
-	private SymbolsDTO symbolsDTO;
-	private RatesDTO ratesDTO;
 
-	@Autowired
-	private ExchangeratesSymbolsClient exchangeratesClient;
+	public SymbolsDTO getSymbols() ;
 	
-	@Autowired
-	private ExchangeratesClient exchangeratesSymbolsClient;
-
-	public SymbolsDTO getSymbols() {
-		
-		if(symbolsDTO==null) {
-			symbolsDTO = new SymbolsDTO(exchangeratesClient.getSymbols());
-			log.info("Loading symbols");
-		}
-		
-		return symbolsDTO;
-	}
+	public boolean isValidSymbol(String symbol) ;
 	
-	public boolean isValidSymbol(String symbol) {
-		
-		for(SymbolDTO S: this.getSymbols().getSymbols()) {
-			if(S.getSymbol().equals(symbol))
-				return true;
-		}
-		
-		return false;
-	}
+	public RatesDTO getRates() ;
 	
-	public RatesDTO getRates() {
-		
-		if(ratesDTO==null || !this.isToday(ratesDTO.getDate())) {//if is null or data is not from today then load from service
-			ratesDTO = exchangeratesSymbolsClient.getRates();
-			log.info("Loading rates");
-		}
-		
-		return ratesDTO;
-	}
-	
-	private boolean isToday(Date date) {
-		
-		return CustomDateFunctions.isTodayWithOutMinutes(date); 
-	}
 }
