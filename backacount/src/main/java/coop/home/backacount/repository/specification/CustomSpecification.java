@@ -28,10 +28,18 @@ public class CustomSpecification {
 			@Override
 			public Predicate toPredicate(Root<Accounttransfers> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				
-				Join<Accounts,Accounttransfers> transferJoin = root.join("accounts");
+				Join<Accounts,Accounttransfers> transferSourceAcountJoin = root.join("accounts");
+				Join<Accounts,Accounttransfers> transferReceptionAcountJoin = root.join("accounts1");
 				
-				return cb.and(cb.equal(transferJoin.get("accountsPK").get("usersidfinancialcompany"), idfinancialcompany),
-						cb.equal(transferJoin.get("financialusers").get("financialusersPK").get("loginuser"), loginuser));
+				Predicate sourceAcountIdfinancialcompany = cb.equal(transferSourceAcountJoin.get("accountsPK").get("usersidfinancialcompany"), idfinancialcompany);
+				Predicate sourceAcountLoginuser = cb.equal(transferSourceAcountJoin.get("financialusers").get("financialusersPK").get("loginuser"), loginuser);
+				Predicate sourceAcountPredicate = cb.and(sourceAcountIdfinancialcompany , sourceAcountLoginuser);
+				
+				Predicate receptionAcountIdfinancialcompany = cb.equal(transferReceptionAcountJoin.get("accountsPK").get("usersidfinancialcompany"), idfinancialcompany);
+				Predicate receptionAcountLoginuser = cb.equal(transferReceptionAcountJoin.get("financialusers").get("financialusersPK").get("loginuser"), loginuser);
+				Predicate receptionAcountPredicate = cb.and(receptionAcountIdfinancialcompany , receptionAcountLoginuser);
+				
+				return cb.or(sourceAcountPredicate , receptionAcountPredicate);
 			}
 		};
 	}
