@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0B343EC4-277D-8BBB-AA2B-64700A748F97" name="Transactions">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:09:42 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="AccountIDfinancialCompany" id="CC1D2B89-EEEC-6A81-5294-3DFD57AD715A">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 19:00:36 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Column>
+<Column name="IDAcount" id="11289148-49F9-845A-5E58-026CE2574AA0">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 19:24:10 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Column>
+<Column name="IDTipoTransaccion" id="BDDB69ED-00ED-CCBF-D77C-FF1105872912">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 19:00:17 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Column>
+<Column name="TransactionDate" id="AEDB4B43-ACC6-8491-01D7-F1F15B62EDB8">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 21:51:12 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>23</dataTypeSize>
+<ownDataTypeParameters>23,,</ownDataTypeParameters>
+</Column>
+<Column name="Amount" id="438A41CA-47C4-5C95-6CB3-B92B57CC3CA8">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:37:34 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,*,2</ownDataTypeParameters>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D3B028C6-EA49-0B3B-75CD-341A57CC9FDF" name="Transaction_PK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:11:28 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BDDB69ED-00ED-CCBF-D77C-FF1105872912"/>
+<colUsage columnID="CC1D2B89-EEEC-6A81-5294-3DFD57AD715A"/>
+<colUsage columnID="11289148-49F9-845A-5E58-026CE2574AA0"/>
+<colUsage columnID="AEDB4B43-ACC6-8491-01D7-F1F15B62EDB8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="10948C8D-1CA4-50D4-8E50-4CCF0992ABA6" name="TransTipoTransaccion_FK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 19:00:17 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BDDB69ED-00ED-CCBF-D77C-FF1105872912"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9AAA47EF-61C1-318F-4B5E-88A709A00223" name="TransaccionesAccount_FK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 19:00:36 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CC1D2B89-EEEC-6A81-5294-3DFD57AD715A"/>
+<colUsage columnID="11289148-49F9-845A-5E58-026CE2574AA0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

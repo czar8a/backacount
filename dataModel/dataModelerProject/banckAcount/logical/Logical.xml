@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="91857E9A-600D-1936-F25F-67315CEE5625" mainViewID="45DF819C-A42E-9B41-9358-0F69F5DCD4B6">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:41:17 UTC</createdTime>
+<ownerDesignName>yellowPaper</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

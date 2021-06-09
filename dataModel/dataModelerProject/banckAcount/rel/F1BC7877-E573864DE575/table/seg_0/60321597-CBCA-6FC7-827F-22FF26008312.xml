@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="60321597-CBCA-6FC7-827F-22FF26008312" name="DocumentTypes">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:56:58 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDDocType" id="6A0D8A91-3F62-F8D8-8BB4-E8DE91450979">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:58:17 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Column>
+<Column name="TypeName" id="B8CB1B96-079A-2809-7D8B-42071057D46C">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:58:17 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="33C931AB-6B7B-B2B3-05D9-37C90BCBAED6" name="DocumentType_PK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:58:17 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A0D8A91-3F62-F8D8-8BB4-E8DE91450979"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

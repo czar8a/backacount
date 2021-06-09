@@ -1,0 +1,44 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6B9B591E-2662-92A1-661E-A2EE97A9D290" name="TransactionTypes">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:06:53 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDTransactionType" id="9F17468E-DB30-6D51-79D4-3B99A1EA7235">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:07:43 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Column>
+<Column name="TransactionName" id="FD9DF035-F367-6BE0-2485-9151D2E03019">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:09:22 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BAA665FA-4ED3-76A8-D67A-77A34EF4E9E8" name="TransactionType_PK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:07:59 UTC</createdTime>
+<ownerDesignName>banckAcount</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9F17468E-DB30-6D51-79D4-3B99A1EA7235"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
