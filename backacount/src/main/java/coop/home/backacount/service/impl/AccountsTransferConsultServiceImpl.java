@@ -12,6 +12,8 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,8 +58,9 @@ class AccountsTransferConsultServiceImpl implements AccountsTransferConsultServi
 			throw new UnAuthorizedException(mensajes.getMessage("app.security.acountowner.code", null, LocaleContextHolder.getLocale()),
 					mensajes.getMessage("app.security.acountowner.mesage", null, LocaleContextHolder.getLocale()));
 		}
-		
-		Pageable pageable = PageRequest.of(pageNumber-1, numberElements);
+
+		Sort sort = Sort.by(Order.desc("accounttransfersPK_transferdate"));
+		Pageable pageable = PageRequest.of(pageNumber-1, numberElements,sort);
 			
 		Page<Accounttransfers> pagedResult = accountsTransferRepository.findAll(CustomSpecification.filterByUserAccounts(idfinancialcompany,loginuser) ,pageable);
 
