@@ -75,11 +75,5 @@ class JWTAuthorizationFilter extends OncePerRequestFilter {
 			return false;
 		return true;
 	}
-	
-	public static String obtenerUsuario(String token) {
-		String jwtToken = token.replace(JwtVariables.BEARER, "");
-		Claims claims = Jwts.parser().setSigningKey(JwtVariables.LLAVE_SECRETA.getBytes()).parseClaimsJws(jwtToken).getBody();
-		return claims.getSubject();
-	}
 
 }
