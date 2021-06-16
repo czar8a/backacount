@@ -1,1 +1,0 @@
-package coop.home.backacount.externalresource;
