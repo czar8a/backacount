@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6A3D903F-E5D4-00B2-AAF8-E29134C52293" name="Accounts">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:47:36 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDAccount" id="7CC45CCE-2B2A-75D4-1344-53B948F716F2">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:48:01 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Column>
+<Column name="UsersIDfinancialCompany" id="67818F93-9A3C-E489-D01D-453A0E43B2F1">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 18:58:44 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Column>
+<Column name="LoginUser" id="009EFB92-7760-0005-21FB-AED76FD9F60A">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 22:04:22 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Column>
+<Column name="Balance" id="CD5BC4CA-9F82-BA67-7771-B00053F03BE1">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 15:38:28 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,*,2</ownDataTypeParameters>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="29281F4C-A6B3-E5DC-98D4-CDBBFBC00076" name="account_PK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-01 14:48:01 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="67818F93-9A3C-E489-D01D-453A0E43B2F1"/>
+<colUsage columnID="7CC45CCE-2B2A-75D4-1344-53B948F716F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="02719A2C-5BAA-27B2-5B19-EBCA3221B81D" name="accountUser_FK">
+<createdBy>cochoa</createdBy>
+<createdTime>2021-06-03 18:58:44 UTC</createdTime>
+<ownerDesignName>bankAccount</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="67818F93-9A3C-E489-D01D-453A0E43B2F1"/>
+<colUsage columnID="009EFB92-7760-0005-21FB-AED76FD9F60A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "563bfd2b-9a9e-4f00-aaa3-e3095ac66c3c",
+		"name": "backacount",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "lang",
+						"value": "fr",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idfinancialcompany\": 1,\r\n  \"loginuser\": \"owen\",\r\n  \"pass\": \"#$erwaf343\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{IP}}/security/login",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"security",
+						"login"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "fr",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "renewToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/security/renewToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"security",
+						"renewToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "financialcompany",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP}}/financialcompany",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"financialcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "financialusers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP}}/financialusers",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"financialusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accounts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP}}/accounts?idfinancialcompany=1&loginuser=owen",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "idfinancialcompany",
+							"value": "1"
+						},
+						{
+							"key": "loginuser",
+							"value": "owen"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accounts/transactions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP}}/accounts/transactions?idfinancialcompany=1&idacount=12354352J543",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"accounts",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "idfinancialcompany",
+							"value": "1"
+						},
+						{
+							"key": "idacount",
+							"value": "12354352J543"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfers/symbols",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP}}/transfers/symbols",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"transfers",
+						"symbols"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sourceAccount\": {\r\n    \"usersidfinancialcompany\": 1,\r\n    \"idacount\": \"12354352J543\"\r\n  },\r\n  \"recipientAccount\": {\r\n    \"usersidfinancialcompany\": 1,\r\n    \"idacount\": \"74926A4045324543\"\r\n  },\r\n  \"transferSymbol\": \"COP\",\r\n  \"transferAmount\": 1200000,\r\n  \"transferDescripcion\": \"pay 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{IP}}/transfers",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfers/financialuser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IP}}/transfers/financialuser?idfinancialcompany=1&loginuser=owen&pageNumber=1&numberElements=10",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"transfers",
+						"financialuser"
+					],
+					"query": [
+						{
+							"key": "idfinancialcompany",
+							"value": "1"
+						},
+						{
+							"key": "loginuser",
+							"value": "owen"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "numberElements",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exchangeratesapi/symbols",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.exchangeratesapi.io/v1/symbols?access_key=c256db3de4f9465e55fef172b808b815",
+					"protocol": "http",
+					"host": [
+						"api",
+						"exchangeratesapi",
+						"io"
+					],
+					"path": [
+						"v1",
+						"symbols"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "c256db3de4f9465e55fef172b808b815"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exchangeratesapi/latest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
