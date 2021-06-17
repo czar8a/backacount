@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "563bfd2b-9a9e-4f00-aaa3-e3095ac66c3c",
-		"name": "backacount",
+		"name": "bankaccount",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -173,7 +173,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{IP}}/accounts/transactions?idfinancialcompany=1&idacount=12354352J543",
+					"raw": "{{IP}}/accounts/transactions?idfinancialcompany=1&idaccount=12354352J543",
 					"host": [
 						"{{IP}}"
 					],
@@ -187,7 +187,7 @@
 							"value": "1"
 						},
 						{
-							"key": "idacount",
+							"key": "idaccount",
 							"value": "12354352J543"
 						}
 					]
@@ -240,7 +240,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"sourceAccount\": {\r\n    \"usersidfinancialcompany\": 1,\r\n    \"idacount\": \"12354352J543\"\r\n  },\r\n  \"recipientAccount\": {\r\n    \"usersidfinancialcompany\": 1,\r\n    \"idacount\": \"74926A4045324543\"\r\n  },\r\n  \"transferSymbol\": \"COP\",\r\n  \"transferAmount\": 1200000,\r\n  \"transferDescripcion\": \"pay 1\"\r\n}",
+					"raw": "{\r\n  \"sourceAccount\": {\r\n    \"usersidfinancialcompany\": 1,\r\n    \"idaccount\": \"12354352J543\"\r\n  },\r\n  \"recipientAccount\": {\r\n    \"usersidfinancialcompany\": 1,\r\n    \"idaccount\": \"74926A4045324543\"\r\n  },\r\n  \"transferSymbol\": \"COP\",\r\n  \"transferAmount\": 1200000,\r\n  \"transferDescripcion\": \"pay 1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
